@@ -6,27 +6,21 @@
     <title>Мій Планер</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <meta name="theme-color" content="#4CAF50">
+    <meta name="theme-color" content="#f7f9fc">
 </head>
 <body>
-    <!-- Нова верхня навігація -->
     <header class="top-bar">
-        <button class="left-btn" onclick="alert('Тут можна додати перехід на іншу сторінку')">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <h1 class="page-title">Сьогодні</h1>
-        <div class="spacer"></div>
+        <h1 class="page-title">Мої Завдання</h1>
     </header>
 
     <div class="app-container">
-        <button id="notify-btn" class="notify-btn">🔔 Увімкнути ранкові нагадування</button>
+        <button id="notify-btn" class="notify-btn">🔔 Увімкнути нагадування</button>
         
         <div class="task-card">
             <div class="task-header">
-                <h2>💊 Ранкові ліки</h2>
-                <span class="badge">08:00</span>
+                <h2>💊 Випити ліки</h2>
+                <span class="badge">1 раз на день</span>
             </div>
-            <p class="description">Не забудьте випити ліки після сніданку.</p>
             
             <button id="med-btn" class="action-btn">Я випив(ла) ліки</button>
             
@@ -34,8 +28,38 @@
                 <p>Наступний прийом через:</p>
                 <div id="countdown" class="time">24:00:00</div>
             </div>
+            
+            <p class="description">Вітаміни або ліки, які потрібно приймати щодня.</p>
+        </div>
+
+        <div class="empty-task" onclick="alert('Тут буде меню додавання завдання')">
+            <span class="plus-icon">+</span>
+            <p>Додати завдання...</p>
+        </div>
+        <div class="empty-task" onclick="alert('Тут буде меню додавання завдання')">
+            <span class="plus-icon">+</span>
+            <p>Додати завдання...</p>
+        </div>
+        <div class="empty-task" onclick="alert('Тут буде меню додавання завдання')">
+            <span class="plus-icon">+</span>
+            <p>Додати завдання...</p>
         </div>
     </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <span class="icon">📋</span>
+            <span>Сьогодні</span>
+        </div>
+        <div class="nav-item" onclick="alert('Розділ в розробці')">
+            <span class="icon">📅</span>
+            <span>Календар</span>
+        </div>
+        <div class="nav-item" onclick="alert('Розділ в розробці')">
+            <span class="icon">⚙️</span>
+            <span>Налаштування</span>
+        </div>
+    </nav>
 
     <script src="app.js"></script>
 </body>
