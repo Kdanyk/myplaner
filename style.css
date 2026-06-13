@@ -6,153 +6,185 @@
 }
 
 body {
-    background-color: #f0f4f8;
-    color: #102a43;
+    background-color: #f7f9fc;
+    color: #1a202c;
+    padding-bottom: 90px; /* Місце для нижнього меню */
 }
 
-/* Верхня панель навігації */
+/* Заголовок */
 .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-}
-
-.left-btn {
-    background: none;
-    border: none;
-    color: #102a43;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: background 0.2s;
-}
-
-.left-btn:active {
-    background: #e4e7eb;
+    padding: 30px 20px 20px;
+    text-align: center;
 }
 
 .page-title {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3748;
 }
 
-.spacer {
-    width: 34px; /* Для балансу з лівою кнопкою */
-}
-
-/* Контейнер додатку */
+/* Контейнер */
 .app-container {
-    padding: 20px;
+    padding: 0 20px;
     max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Кнопка сповіщень */
+/* Сповіщення */
 .notify-btn {
     width: 100%;
-    background-color: #e1f5fe;
-    color: #0277bd;
-    border: 1px solid #b3e5fc;
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border: none;
     padding: 12px;
     border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 20px;
     cursor: pointer;
     transition: all 0.2s;
 }
+.notify-btn.hidden { display: none !important; }
 
-.notify-btn.hidden {
-    display: none;
-}
-
-/* Картка завдання */
+/* Картка ліків */
 .task-card {
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
+    background: white;
     border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid white;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
 .task-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .task-header h2 {
-    font-size: 22px;
-    color: #243b53;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .badge {
-    background: #d1fae5;
-    color: #065f46;
+    background: #e6fffa;
+    color: #2b6cb0;
     padding: 6px 12px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-}
-
-.description {
-    color: #627d98;
-    font-size: 15px;
-    margin-bottom: 24px;
-    line-height: 1.5;
+    background-color: #c6f6d5;
+    color: #22543d;
 }
 
 .action-btn {
     width: 100%;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: #48bb78;
     color: white;
     border: none;
     padding: 16px;
-    border-radius: 14px;
-    font-size: 18px;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    transition: transform 0.1s, box-shadow 0.1s;
+    margin-bottom: 15px;
+    transition: opacity 0.2s;
 }
-
-.action-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-}
+.action-btn:active { opacity: 0.8; }
 
 .timer-box {
     text-align: center;
-    background: #fffbeb;
+    background: #fffaf0;
     padding: 20px;
-    border-radius: 14px;
-    color: #b45309;
-    border: 1px solid #fde68a;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
 .timer-box p {
+    color: #c05621;
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .timer-box .time {
-    font-size: 36px;
+    color: #dd6b20;
+    font-size: 34px;
     font-weight: 800;
-    margin-top: 8px;
-    font-variant-numeric: tabular-nums;
+    letter-spacing: 1px;
 }
 
-.hidden {
-    display: none !important;
+.description {
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.5;
 }
+
+/* Пусті завдання */
+.empty-task {
+    background: transparent;
+    border: 2px dashed #cbd5e0;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    color: #a0aec0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+.empty-task:active { background: #edf2f7; }
+
+.empty-task .plus-icon {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+/* Нижня навігація */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0 25px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a0aec0;
+    font-size: 12px;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.nav-item.active {
+    color: #2d3748;
+    font-weight: bold;
+}
+
+.nav-item .icon {
+    font-size: 22px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.nav-item.active .icon {
+    filter: none;
+    opacity: 1;
+}
+
+.hidden { display: none !important; }
