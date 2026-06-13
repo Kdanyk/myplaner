@@ -1,4 +1,3 @@
-// Реєстрація Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js')
       .then(() => console.log('Service Worker зареєстровано'));
@@ -11,7 +10,6 @@ const notifyBtn = document.getElementById('notify-btn');
 
 const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
 
-// --- ЛОГІКА ТАЙМЕРА ---
 function updateTimer() {
     const lastTaken = localStorage.getItem('medLastTaken');
     
@@ -52,9 +50,6 @@ btn.addEventListener('click', () => {
 setInterval(updateTimer, 1000);
 updateTimer();
 
-// --- ЛОГІКА СПОВІЩЕНЬ ---
-
-// Перевіряємо, чи вже надано дозвіл. Якщо так - ховаємо кнопку налаштування.
 if (Notification.permission === 'granted') {
     notifyBtn.classList.add('hidden');
     startMorningCheck();
@@ -77,21 +72,15 @@ notifyBtn.addEventListener('click', () => {
     });
 });
 
-// Функція перевірки часу для ранкового сповіщення
 function startMorningCheck() {
     setInterval(() => {
         const now = new Date();
-        
-        // Спрацює рівно о 08:00:00 ранку
         if (now.getHours() === 8 && now.getMinutes() === 0 && now.getSeconds() === 0) {
-            
-            // Перевіряємо, чи ми вже не випили ліки сьогодні
             const lastTaken = localStorage.getItem('medLastTaken');
             let shouldNotify = true;
             
             if (lastTaken) {
                 const timeSinceLastTaken = now.getTime() - parseInt(lastTaken);
-                // Якщо ліки випиті менше ніж 8 годин тому, не турбувати
                 if (timeSinceLastTaken < 8 * 60 * 60 * 1000) {
                     shouldNotify = false;
                 }
@@ -101,12 +90,10 @@ function startMorningCheck() {
                 navigator.serviceWorker.ready.then(registration => {
                     registration.showNotification("💊 Ранкові ліки!", {
                         body: "Добрий ранок! Час випити ваші ліки.",
-                        icon: "https://cdn-icons-png.flaticon.com/512/2382/2382461.png",
-                        vibrate: [200, 100, 200, 100, 200],
-                        badge: "https://cdn-icons-png.flaticon.com/512/2382/2382461.png"
+                        icon: "https://cdn-icons-png.flaticon.com/512/2382/2382461.png"
                     });
                 });
             }
         }
-    }, 1000); // Перевіряємо кожну секунду
+    }, 1000);
 }
